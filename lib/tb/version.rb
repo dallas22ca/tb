@@ -1,3 +1,3 @@
-module Tb
+class Tb
   VERSION = "0.0.1"
 end
