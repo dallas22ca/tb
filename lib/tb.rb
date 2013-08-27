@@ -19,9 +19,12 @@ class Tb
     RestClient.get "#{api_address}/contacts?page=#{page}", headers
   end
   
-  def add_contacts(contacts = [])
+  def add_contacts(contacts = [], args = {})
+    args[:overwrite] ||= false
+
     details = {
-      "contacts[]" => contacts
+      "contacts[]" => contacts,
+      "overwrite" => args[:overwrite]
     }
     
     RestClient.post "#{api_address}/contacts", details, headers
